@@ -10,5 +10,4 @@ class House(models.Model):
  date_posted = models.DateTimeField(auto_now_add=True)
  
  def __str__(self):
-     return self.title
-    
+     return f"{self.title} - {self.location}"

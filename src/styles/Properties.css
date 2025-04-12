@@ -1,0 +1,84 @@
+/* General Styles */
+.properties-container {
+    background-color: #e6f7e6; /* Light green background */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .properties-header {
+    text-align: center;
+    padding: 20px 0;
+    color: #2c3e50;
+  }
+  
+  .properties-header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .properties-header p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Sorting Section */
+  .sorting-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .view-toggles {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .btn-primary {
+    background: #27ae60;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .btn-outline-primary {
+    background: transparent;
+    border: 1px solid #27ae60;
+    color: #27ae60;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* Sort Dropdown */
+  .sort-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .form-select {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* HouseList */
+  .properties-main {
+    margin-top: 20px;
+  }
+  
