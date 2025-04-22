@@ -22,11 +22,12 @@ export const searchHouses = async (searchParams) => {
 
 export const addHouse = async (houseData) => {
     try {
+        console.log('Sending house data:', houseData); // Debug log
         const response = await apiClient.post('/houses/add/', houseData);
-        console.log('House added:', response.data);
+        console.log('Server response:', response.data); // Debug log
         return response.data;
     } catch (error) {
-        console.error('Error adding house:', error.response?.data || error.message);
+        console.error('Server error:', error.response?.data);
         throw error;
     }
 };

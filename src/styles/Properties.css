@@ -1,84 +1,124 @@
 /* General Styles */
 .properties-container {
-    background-color: #e6f7e6; /* Light green background */
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .properties-header {
-    text-align: center;
-    padding: 20px 0;
-    color: #2c3e50;
-  }
-  
-  .properties-header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .properties-header p {
-    font-size: 1.2rem;
-    color: #555;
-  }
-  
-  /* Sorting Section */
-  .sorting-section {
+    min-height: 100vh;
+    background-color: #f0f9f0;  /* Lighter green background */
+}
+
+.properties-header {
+    height: 500px;
+    background: linear-gradient(rgba(40, 167, 69, 0.8), rgba(40, 167, 69, 0.9));  /* Green gradient */
+    background-size: cover;
+    background-position: center;
+    color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: 20px 0;
-    padding: 10px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .view-toggles {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Sorting Section */
+.sorting-section {
+    background-color: #e8f5e9;  /* Light mint green */
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.view-toggles {
     display: flex;
     gap: 10px;
-  }
-  
-  .btn {
+}
+
+.view-toggles button {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn {
     padding: 8px 12px;
     border: none;
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease-in-out;
-  }
-  
-  .btn-primary {
-    background: #27ae60;
-    color: white;
-    border-radius: 5px;
-  }
-  
-  .btn-outline-primary {
-    background: transparent;
-    border: 1px solid #27ae60;
-    color: #27ae60;
-    border-radius: 5px;
-  }
-  
-  .btn:hover {
+}
+
+.btn-primary {
+    background-color: #28a745 !important;  /* Bootstrap green */
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+.btn-outline-primary {
+    border: 2px solid #28a745 !important;
+    color: #28a745 !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+.btn:hover {
     opacity: 0.8;
-  }
-  
-  /* Sort Dropdown */
-  .sort-options {
+}
+
+/* Sort Dropdown */
+.sort-options {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-  
-  .form-select {
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  /* HouseList */
-  .properties-main {
+}
+
+.form-select {
+    min-width: 200px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* HouseList */
+.properties-main {
     margin-top: 20px;
-  }
-  
+}
+
+.house-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+/* Add a subtle green tint to card hover */
+.house-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+}
+
+.house-card .card-body {
+    padding: 1.5rem;
+}
+
+.house-card .card-title {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.price-tag {
+    color: #27ae60;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 1rem 0;
+}
