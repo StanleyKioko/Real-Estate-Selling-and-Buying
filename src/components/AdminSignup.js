@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import apiClient from '../services/apiConfig';
 
 const AdminSignup = () => {
     const [formData, setFormData] = useState({
@@ -8,13 +9,15 @@ const AdminSignup = () => {
         password: ''
     });
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/api/admin/signup/', formData);
+            const response = await apiClient.post('/admin/signup/', formData);
             localStorage.setItem('token', response.data.access);
-            window.location.href = '/'; // Change redirect to home page
+            navigate('/');
+            window.location.reload();
         } catch (err) {
             setError('Failed to sign up');
         }

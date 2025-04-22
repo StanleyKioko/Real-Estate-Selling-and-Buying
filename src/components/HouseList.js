@@ -11,6 +11,7 @@ const HouseList = ({ sortOption, filters }) => {
             try {
                 setLoading(true);
                 const data = await fetchHouses();
+                console.log('Fetched houses:', data); // Debug log
                 setHouses(data);
             } catch (error) {
                 console.error('Failed to fetch houses:', error);
@@ -44,26 +45,20 @@ const HouseList = ({ sortOption, filters }) => {
                     <div className="no-results">No houses available</div>
                 ) : (
                     sortedHouses.map((house, index) => (
-                        <div className="col-md-4 mb-4" key={house.id}
-                             style={{ animation: `slideIn 0.5s ease-out forwards ${index * 0.1}s` }}>
+                        <div className="col-md-4 mb-4" key={house.id}>
                             <div className="card h-100 house-card">
-                                <div className="card-img-overlay">
-                                    <span className="badge bg-primary">{house.propertyType}</span>
-                                </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{house.title}</h5>
-                                    <p className="card-text description">{house.description}</p>
-                                    <div className="property-features">
-                                        <span><i className="fas fa-map-marker-alt"></i> {house.location}</span>
-                                        <span><i className="fas fa-bed"></i> {house.bedrooms} beds</span>
-                                    </div>
-                                    <div className="price-tag">
-                                        ${house.price.toLocaleString()}
-                                    </div>
-                                </div>
-                                <div className="card-footer">
-                                    <small className="text-muted">Listed by {house.seller_name}</small>
-                                    <button className="btn btn-primary float-end">View Details</button>
+                                    <p className="card-text">{house.description}</p>
+                                    <p className="card-text">
+                                        <strong>Price:</strong> ${Number(house.price).toLocaleString()}
+                                    </p>
+                                    <p className="card-text">
+                                        <strong>Location:</strong> {house.location}
+                                    </p>
+                                    <p className="card-text">
+                                        <small className="text-muted">Listed by {house.seller_name}</small>
+                                    </p>
                                 </div>
                             </div>
                         </div>

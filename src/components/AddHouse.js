@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { addHouse } from '../services/houseService';
 
 const AddHouse = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -15,13 +17,12 @@ const AddHouse = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const token = localStorage.getItem('token');
-            await axios.post('http://localhost:8000/api/houses/add/', formData, {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
+            // Ensure price is a number
+            const formattedData = {
+                ...formData,
+                price: parseFloat(formData.price)
+            };
+            await addHouse(formattedData);
             setSuccess('House added successfully!');
             setFormData({
                 title: '',
@@ -30,8 +31,12 @@ const AddHouse = () => {
                 location: '',
                 seller_name: ''
             });
+            setTimeout(() => {
+                navigate('/properties');
+            }, 2000);
         } catch (err) {
-            setError('Failed to add house');
+            setError('Failed to add house. Please ensure you are logged in as an admin.');
+            console.error('Error:', err);
         }
     };
 

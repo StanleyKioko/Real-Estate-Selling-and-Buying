@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import apiClient from '../services/apiConfig';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/api/admin/login/', formData);
+            const response = await apiClient.post('/admin/login/', formData);
             localStorage.setItem('token', response.data.access);
             navigate('/');
             window.location.reload(); // Force reload to update navbar

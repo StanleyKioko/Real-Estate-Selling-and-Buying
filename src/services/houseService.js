@@ -1,28 +1,32 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8000';
-
-const axiosInstance = axios.create({
-  baseURL: API_URL,
-  timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  }
-});
+import apiClient from './apiConfig';
 
 export const fetchHouses = async () => {
-  console.log('Attempting to fetch houses from:', `${API_URL}/api/houses/`);
-  try {
-    const response = await axiosInstance.get('/api/houses/');
-    console.log('API Response:', response);
-    return response.data;
-  } catch (error) {
-    console.error('API Error:', {
-      message: error.message,
-      config: error.config,
-      response: error.response
-    });
-    throw new Error(`Failed to fetch houses: ${error.message}`);
-  }
+    try {
+        const response = await apiClient.get('/houses/');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching houses:', error);
+        throw error;
+    }
+};
+
+export const searchHouses = async (searchParams) => {
+    try {
+        const response = await apiClient.get('/search/', { params: searchParams });
+        return response.data;
+    } catch (error) {
+        console.error('Error searching houses:', error);
+        throw error;
+    }
+};
+
+export const addHouse = async (houseData) => {
+    try {
+        const response = await apiClient.post('/houses/add/', houseData);
+        console.log('House added:', response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Error adding house:', error.response?.data || error.message);
+        throw error;
+    }
 };
