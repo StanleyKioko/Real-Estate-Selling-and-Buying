@@ -1,0 +1,79 @@
+.assistant-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 20px;
+}
+
+.assistant-header {
+    padding: 1rem;
+    background: #4caf50;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.welcome-message {
+    text-align: center;
+    color: #666;
+    padding: 2rem;
+}
+
+.message {
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.message.user {
+    background: #e8f5e9;
+    align-self: flex-end;
+}
+
+.message.bot {
+    background: #f5f5f5;
+    align-self: flex-start;
+}
+
+.input-form {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-form input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.input-form button {
+    padding: 0.75rem 1.5rem;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}

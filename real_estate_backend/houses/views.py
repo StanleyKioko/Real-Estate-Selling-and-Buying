@@ -6,8 +6,12 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.db.models import Q
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
+from transformers import pipeline
 from .models import House
 from .serializers import HouseSerializer, UserSerializer
+
+# Initialize the model
+chatbot = pipeline("text2text-generation", model="facebook/blenderbot-400M-distill")
 
 @api_view(['GET'])
 def house_list(request):
@@ -96,3 +100,28 @@ def admin_login(request):
             'access': str(refresh.access_token),
         })
     return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+@api_view(['POST'])
+def ai_chat(request):
+    message = request.data.get('message')
+    try:
+        # Generate response using the model
+        response = chatbot(message, max_length=100)[0]['generated_text']
+        return Response({'message': response})
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['POST'])
+def ai_recommend(request):
+    preferences = request.data
+    try:
+        # Get properties matching preferences
+        houses = House.objects.all()
+        # Use the model to generate personalized recommendations
+        recommendations = chatbot(
+            f"Find properties matching: {preferences}",
+            max_length=200
+        )[0]['generated_text']
+        return Response({'recommendations': recommendations})
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

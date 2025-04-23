@@ -8,6 +8,8 @@ import Properties from './components/Properties';
 import Login from './components/Login';
 import AdminSignup from './components/AdminSignup';
 import AddHouse from './components/AddHouse';
+import PropertyAssistant from './components/PropertyAssistant';
+import ChatAssistant from './components/ChatAssistant';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/main.css';
 
@@ -24,7 +26,9 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/admin-signup" element={<AdminSignup />} />
           <Route path="/add-house" element={<AddHouse />} />
+          <Route path="/assistant" element={<PropertyAssistant />} />
         </Routes>
+        <ChatAssistant />
       </div>
     </Router>
   );
